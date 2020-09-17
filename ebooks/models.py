@@ -18,9 +18,9 @@ class Ebook (models.Model):
 
 
 class Review (models.Model):
-    review_author = models.CharField(max_length=20, help_text='Enter field documentation')
+    review_author = models.CharField(max_length=100)
     review = models.TextField()
-    rating = models.PositiveIntegerField(validators=[MinLengthValidator(1), MaxLengthValidator(5)])
+    rating = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

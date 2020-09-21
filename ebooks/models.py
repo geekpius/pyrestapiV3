@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.contrib.auth.models import User
+
 
 class Ebook (models.Model):
     title = models.CharField(max_length=140)
@@ -18,7 +20,7 @@ class Ebook (models.Model):
 
 
 class Review (models.Model):
-    review_author = models.CharField(max_length=100)
+    review_author = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.TextField()
     rating = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)

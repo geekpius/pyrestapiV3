@@ -5,7 +5,7 @@ from rest_framework.permissions import (IsAuthenticated, IsAuthenticatedOrReadOn
 from rest_framework.exceptions import ValidationError
 
 from ebooks.api.permissions import IsAdminUserOrReadOnly, IsReviewAuthorOrReadOnly
-
+from ebooks.api.paginations import SmallSetPagination
 from ebooks.models import Ebook, Review
 from ebooks.api.serializers import EbookSerializer, ReviewSerializer
 
@@ -13,6 +13,7 @@ from ebooks.api.serializers import EbookSerializer, ReviewSerializer
 class EbookListCreateAPIView(ListCreateAPIView):
     queryset = Ebook.objects.all()
     serializer_class = EbookSerializer
+    pagination_class = SmallSetPagination
     permission_classes = [IsAdminUserOrReadOnly]
 
 
